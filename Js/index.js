@@ -11,6 +11,7 @@ form.addEventListener('submit', async (e) => {
 
   try {
     const res = await fetch('https://api.portfolio.buttnetworks.com/portfolio', {
+      
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
