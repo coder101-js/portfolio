@@ -10,7 +10,7 @@ form.addEventListener('submit', async (e) => {
   const Phone = document.getElementById('Phone').value;
 
   try {
-    const res = await fetch('https://api.portfolio.buttnetworks.com/portfolio', {
+    const res = await fetch('http://localhost:5000/portfolio', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
