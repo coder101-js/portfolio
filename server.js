@@ -14,9 +14,13 @@ const PORT = process.env.PORT || 3000;
 
 // === Middlewares ===
 app.use(cors({
-  origin: "https://www.portfolio.buttnetworks.com",
-  credentials: false // if you're using cookies/auth tokens
+  origin: [
+    "https://portfolio.buttnetworks.com",
+    "https://www.portfolio.buttnetworks.com"
+  ],
+  credentials: false // set to true if using cookies
 }));
+
 app.use(express.json());
 
 // Bot protection middleware
