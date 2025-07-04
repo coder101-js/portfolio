@@ -25,7 +25,7 @@ form.addEventListener('submit', async (e) => {
       msg.style.display = 'none';
     }, 2000);
   } catch (error) {
-    msg.textContent = "⚠️ Error connecting to server!";
+    msg.textContent = "⚠️ Error connecting to server";
     msg.style.display = 'block';
     setTimeout(() => {
       msg.style.display = 'none';
