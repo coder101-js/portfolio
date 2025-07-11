@@ -13,6 +13,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // === Middlewares ===
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.url}`);
+  next();
+});
+
 app.use(
   cors({
     origin: "https://portfolio.buttnetworks.com",
