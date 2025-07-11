@@ -5,22 +5,15 @@ const dotenv = require('dotenv');
 const rateLimit = require('express-rate-limit');
 
 const botProtection = require('./middleware/bot');
-const index = require('./controller/index');
+const contact = require('./controller/contact');
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 
 // === Middlewares ===
-app.use(cors({
-  origin: [
-    "https://portfolio.buttnetworks.com",
-    "https://www.portfolio.buttnetworks.com"
-  ],
-  credentials: false // set to true if using cookies
-}));
-
+app.use(cors());
 app.use(express.json());
 
 // Bot protection middleware
@@ -41,7 +34,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // === Routes ===
-app.use('/', index);
+app.use('/', contact);
 
 // === MongoDB connection ===
 mongoose.connect(process.env.MONGO_URI, {
