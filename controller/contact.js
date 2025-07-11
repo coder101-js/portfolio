@@ -8,6 +8,7 @@ const router = express.Router();
 router.post('/portfolio', async (req, res) => {
   try {
     const { Name, Email, Phone, Message } = req.body;
+    console.log(req.body)
     const newContact = new Contact({ Name, Email, Phone, Message });
     await newContact.save();
     res.json({ message: '✅✅ Message sent successfully!' });

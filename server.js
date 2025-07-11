@@ -29,7 +29,7 @@ app.use(cors(corsOptions));  // Allow cross-origin on all
 app.use(express.json());
 
 // Bot protection middleware
-// app.use(botProtection);
+app.use(botProtection);
 
 // === Logging middleware ===
 
