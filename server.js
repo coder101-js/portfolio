@@ -23,7 +23,8 @@ app.use(
   })
 );
 
-// app.options("*", cors());
+app.options(["/", "/contact", "/contact/*"], cors());
+
 
 app.use(express.json());
 
