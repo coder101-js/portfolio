@@ -10,23 +10,20 @@ form.addEventListener("submit", async (e) => {
   const Phone = document.getElementById("Phone").value;
 
   try {
-    const data = { name, email, phone, message };
+    const data = { Name, Email, Phone, Message };
     const body = {
       data,
       type: "contact/form",
     };
-    const res = await fetch("https://api.buttnetworks.com/gateway", {
+    const server = await fetch(`https://api.buttnetworks.com/gateway`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept-Language": "en-US,en;q=0.9",
-        "User-Agent": navigator.userAgent,
-        "Sec-Fetch-Site": "same-origin",
       },
-      body: JSON.stringify({ Email, Name, Phone, Message }),
+      body: JSON.stringify(body),
     });
 
-    const response = await res.json();
+    const response = await server.json();
     msg.textContent = response.message;
     msg.style.display = "block";
     setTimeout(() => {
