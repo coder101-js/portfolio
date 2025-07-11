@@ -10,7 +10,12 @@ form.addEventListener("submit", async (e) => {
   const Phone = document.getElementById("Phone").value;
 
   try {
-    const res = await fetch("https://api.buttnetworks.com/contact", {
+    const data = { name, email, phone, message };
+    const body = {
+      data,
+      type: "contact/form",
+    };
+    const res = await fetch("https://api.buttnetworks.com/gateway", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,8 +26,8 @@ form.addEventListener("submit", async (e) => {
       body: JSON.stringify({ Email, Name, Phone, Message }),
     });
 
-    const data = await res.json();
-    msg.textContent = data.message;
+    const response = await res.json();
+    msg.textContent = response.message;
     msg.style.display = "block";
     setTimeout(() => {
       msg.style.display = "none";
