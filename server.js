@@ -14,25 +14,21 @@ const PORT = process.env.PORT || 3001;
 
 // === Middlewares ===
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization");
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(204);
-  }
-  next();
-});
-app.use(cors());
+const corsOptions = {
+  origin: "https://portfolio.buttnetworks.com",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions)); // Allow cross-origin on all
 
 app.use(express.json());
 
 // Bot protection middleware
 app.use(botProtection);
 
-// === Logging middleware ===
-
-// === Rate limiting middleware ===
+// Rate limiting middleware
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100,
@@ -41,7 +37,6 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // === Routes ===
-
 app.use("/contact", contact);
 
 // === MongoDB connection ===
@@ -50,10 +45,10 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log(" MongoDB connected!"))
-  .catch((err) => console.error(" MongoDB connection error:", err));
+  .then(() => console.log("✅ MongoDB connected!"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 // === Start server ===
 app.listen(PORT, () =>
-  console.log(` Server running at http://localhost:${PORT}`)
+  console.log(`🚀 Server running at http://localhost:${PORT}`)
 );
