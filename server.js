@@ -4,7 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const rateLimit = require("express-rate-limit");
 
-// const botProtection = require("./middleware/bot");
+const botProtection = require("./middleware/bot");
 const contact = require("./controller/contact");
 
 dotenv.config();
