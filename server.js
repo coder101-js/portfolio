@@ -43,7 +43,7 @@ app.use(limiter);
 
 // === Routes ===
 
-app.use('/', contact);
+app.use('/contact', contact);
 
 // === MongoDB connection ===
 mongoose.connect(process.env.MONGO_URI, {
