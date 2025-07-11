@@ -4,13 +4,13 @@ const msg = document.getElementById("responseMsg");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const Email = document.getElementById("Email").value;
-  const Name = document.getElementById("Name").value;
-  const Message = document.getElementById("Message").value;
-  const Phone = document.getElementById("Phone").value;
+  const email = document.getElementById("Email").value;
+  const name = document.getElementById("Name").value;
+  const message = document.getElementById("Message").value;
+  const phone = document.getElementById("Phone").value;
 
   try {
-    const data = { Name, Email, Phone, Message };
+    const data = { name, email, phone, message };
     const body = {
       data,
       type: "contact/form",
