@@ -11,14 +11,16 @@ form.addEventListener("submit", async (e) => {
 
   try {
     const res = await fetch("https://api.buttnetworks.com/contact/form", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Sec-Fetch-Site": "same-origin",
-      },
-      body: JSON.stringify({ Email, Name, Phone, Message }),
-    });
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept-Language": "en-US,en;q=0.9",
+    "User-Agent": navigator.userAgent,
+    "Sec-Fetch-Site": "same-origin"
+  },
+  body: JSON.stringify({ Email, Name, Phone, Message }),
+});
+
 
     const data = await res.json();
     msg.textContent = data.message;
