@@ -14,14 +14,8 @@ const PORT = process.env.PORT || 5000;
 
 // === Middlewares ===
 
-const corsOptions = {
-  origin: "https://portfolio.buttnetworks.com",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-};
+app.use(cors())
 
-app.use(cors(corsOptions));
 
 
 app.use(express.json());
