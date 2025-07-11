@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 
 // === Middlewares ===
 // app.use(cors());
-app.get('home',(req,res)=>{
+app.get('/home',(req,res)=>{
   return res.json({msg:'hello'})
 })
 app.use(cors({
