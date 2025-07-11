@@ -14,16 +14,14 @@ const PORT = process.env.PORT || 5000;
 
 // === Middlewares ===
 
-app.use(
-  cors({
-    origin: "https://portfolio.buttnetworks.com",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: "https://portfolio.buttnetworks.com",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
 
-app.options(["/", "/contact", "/contact"], cors());
+app.use(cors(corsOptions));
 
 
 app.use(express.json());
