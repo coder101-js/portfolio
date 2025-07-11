@@ -14,6 +14,9 @@ const PORT = process.env.PORT || 5000;
 
 // === Middlewares ===
 // app.use(cors());
+app.get('home',(req,res)=>{
+  return res.json({msg:'hello'})
+})
 app.use(cors({
   origin: 'https://portfolio.buttnetworks.com',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -39,6 +42,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // === Routes ===
+
 app.use('/', contact);
 
 // === MongoDB connection ===
